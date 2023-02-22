@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_144911) do
+ActiveRecord::Schema.define(version: 2023_02_22_145818) do
 
   create_table "propers", force: :cascade do |t|
     t.string "proper_name"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 2023_02_22_144911) do
     t.integer "minute_walk"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "proper_id"
+    t.index ["proper_id"], name: "index_stations_on_proper_id"
   end
 
+  add_foreign_key "stations", "propers"
 end
