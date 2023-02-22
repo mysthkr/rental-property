@@ -3,11 +3,11 @@
 <p><%= notice %></p>
 
 <% @propers.each do |proper| %>
-  物件名: proper.proper_name
-  賃料: proper.rent
-  住所: proper.address
-  築年数: proper.age
-  備考: proper.remark
+  物件名: <%= proper.proper_name %>
+  賃料: <%= proper.rent %>
+  住所: <%= proper.address %>
+  築年数: <%= proper.age %>
+  備考: <%= proper.remark %>
   
   <%= link_to '詳細', proper_path(proper.id) %>
   <%= link_to "編集", edit_proper_path(proper.id), mothod: :get , data: { confirm: '本当に編集していいですか？' } %>

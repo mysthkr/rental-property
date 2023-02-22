@@ -19,7 +19,8 @@ class PropersController < ApplicationController
   end
   
   def show
-    
+    @proper = Proper.find(params[:id])
+    @stations = @proper.stations
   end
   
   def edit
