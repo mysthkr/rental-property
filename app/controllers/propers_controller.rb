@@ -1,0 +1,2 @@
+class PropersController < ApplicationController
+end
