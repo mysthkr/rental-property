@@ -1,15 +1,12 @@
 class PropersController < ApplicationController
   def index
-    
+    @propers = Proper.all
   end
   
   def new
-    if params[:back]
-      @picture = Picture.new(proper_params)
-    else
-      @proper = Proper.new
-      @proper.stations.new
-    end
+    @proper = Proper.new
+    2.times { @proper.stations.build }
+    @proper
   end
   
   def create

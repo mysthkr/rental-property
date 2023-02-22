@@ -14,15 +14,15 @@
   <%= form.label :remark %>
   <%= form.text_area :remark %>
   
-  <%= form.fields_for :staions do |staion| %>
-    <%= staion.label :line_name %>
-    <%= staion.text_field :line_name %>
+  <%= form.fields_for :stations do |station| %>
+    <%= station.label :line_name %>
+    <%= station.text_field :line_name %>
     
-    <%= staion.label :staion_name %>
-    <%= staion.text_field :staion_name %>
+    <%= station.label :station_name %>
+    <%= station.text_field :station_name %>
     
-    <%= staion.label :minute_walk %>
-    <%= staion.number_field :minute_walk %>
+    <%= station.label :minute_walk %>
+    <%= station.number_field :minute_walk %>
   <% end %>
   <%= form.submit %>
 <% end %>
