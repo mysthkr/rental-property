@@ -1,0 +1,30 @@
+<%= form_with(model: @proper,local: true) do |form| %>
+  <%= form.label :proper_name %>
+  <%= form.text_field :proper_name %>
+  
+  <%= form.label :rent %>
+  <%= form.number_field :rent %>
+
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+  
+  <%= form.label :age %>
+  <%= form.number_field :age %>
+  
+  <%= form.label :remark %>
+  <%= form.text_area :remark %>
+  
+  <hr>
+  
+  <%= form.fields_for :stations do |station| %>
+    <%= station.label :line_name %>
+    <%= station.text_field :line_name %>
+    
+    <%= station.label :station_name %>
+    <%= station.text_field :station_name %>
+    
+    <%= station.label :minute_walk %>
+    <%= station.number_field :minute_walk %>
+  <% end %>
+  <%= form.submit %>
+<% end %>

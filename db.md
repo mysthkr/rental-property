@@ -61,3 +61,54 @@ accepts_nested_attributes_forヘルパーが受け取るのはこのようなパ
 　}
 }
 
+---------------
+edit
+
+<h2>物件編集</h2>
+
+<p id="notice"><%= notice %></p>
+
+<%= form_with(model: @proper, local: true ) do |form| %>
+  <% if @proper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proper.errors.count, "error") %> prohibited this feed from being saved:</h2>
+
+      <ul>
+        <% @proper.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :proper_name %>
+  <%= form.text_field :proper_name %>
+  
+  <%= form.label :rent %>
+  <%= form.number_field :rent %>
+  
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+  
+  <%= form.label :age %>
+  <%= form.number_field :age %>
+  
+  <%= form.label :remark %>
+  <%= form.text_area :remark %>
+  
+  <%= form.fields_for :stations do |station| %>
+    <%= station.label :line_name %>
+    <%= station.text_field :line_name %>
+    
+    <%= station.label :station_name %>
+    <%= station.text_field :station_name %>
+    
+    <%= station.label :minute_walk %>
+    <%= station.number_field :minute_walk %>
+  <% end %>
+
+  <%= form.submit %>
+<% end %>
+
+<%= link_to '編集', edit_proper_path(@proper) %> |
+<%= link_to '戻る', propers_path %>

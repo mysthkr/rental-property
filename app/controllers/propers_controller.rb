@@ -6,7 +6,6 @@ class PropersController < ApplicationController
   def new
     @proper = Proper.new
     2.times { @proper.stations.build }
-    @proper
   end
   
   def create
@@ -24,16 +23,23 @@ class PropersController < ApplicationController
   end
   
   def edit
-  
+    @proper = Proper.find(params[:id])
+    @proper.stations.build
   end
 
   def update
-  
+    @proper = Proper.find(params[:id])
+    if @proper.update(proper_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
   
   private
   
   def proper_params
-    params.require(:proper).permit(:proper_name, :rent, :address, :age, :remark, stations_attributes: [:line_name, :station_name, :minute_walk])
+    params.require(:proper).permit(:proper_name, :rent, :address, :age, :remark,
+    stations_attributes: [:line_name, :station_name, :minute_walk, :id])
   end
 end
