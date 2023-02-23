@@ -13,7 +13,7 @@ class PropersController < ApplicationController
   def create
     @proper = Proper.new(proper_params)
     if @proper.save
-      redirect_to propers_path
+      redirect_to propers_path, notice: "登録しました！"
     else
       render :new
     end
@@ -32,10 +32,16 @@ class PropersController < ApplicationController
   def update
     @proper = proper_find
     if @proper.update(proper_params)
-      redirect_to root_path
+      redirect_to root_path, notice: "変更しました！"
     else
       render :edit
     end
+  end
+  
+  def destroy
+    @proper = proper_find
+    @proper.destroy
+    redirect_to propers_path, notice:"投稿を削除しました！"
   end
   
   private
