@@ -1,0 +1,83 @@
+<%= form_with(model: @proper,local: true) do |form| %>
+  <div class="input_item">
+    <div>
+      <%= form.label :proper_name,"物件名" %>
+    </div>
+    <div>
+      <%= form.text_field :proper_name %>
+    </div>
+  </div>
+  
+  <div class="input_item">
+    <div>
+      <%= form.label :rent,"賃料" %>
+    </div>
+    <div>
+      <%= form.number_field :rent %>円
+    </div>
+  </div>
+  
+  <div class="input_item">
+    <div>
+      <%= form.label :address,"住所" %>
+    </div>
+    <div>
+      <%= form.text_field :address %>
+    </div>
+  </div>
+  
+  <div class="input_item">
+    <div>
+      <%= form.label :age,"築年数" %>
+    </div>
+    <div>
+      <%= form.number_field :age %>年
+    </div>
+  </div>
+  
+  <div class="input_item">
+    <div>
+      <%= form.label :remark,"備考" %>
+    </div>
+    <div>
+      <%= form.text_area :remark %>
+    </div>
+  </div>
+
+  <hr>
+  
+  <% i = 1 %>
+  <%= form.fields_for :stations do |station| %>
+    <h3>最寄り駅<%= i %></h3>
+    <div class="input_item">
+      <div>
+        <%= station.label :line_name,"路線名" %>
+      </div>
+      <div>
+        <%= station.text_field :line_name %>
+      </div>
+    </div>
+    
+    <div class="input_item">
+      <div>
+        <%= station.label :station_name,"駅名" %>
+      </div>
+      <div>
+        <%= station.text_field :station_name %>
+      </div>
+    </div>
+    
+    <div class="input_item">
+      <div>
+        <%= station.label :minute_walk,"徒歩分数" %>
+      </div>
+      <div>
+        <%= station.number_field :minute_walk %>分
+      </div>
+    </div>
+    <% i += 1 %>
+  <% end %>
+  <div class="input_item">
+    <%= form.submit button_text %>
+  </div>
+<% end %>
