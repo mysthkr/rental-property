@@ -1,4 +1,6 @@
 class PropersController < ApplicationController
+  include Common
+  
   def index
     @propers = Proper.all
   end
@@ -18,17 +20,17 @@ class PropersController < ApplicationController
   end
   
   def show
-    @proper = Proper.find(params[:id])
+    @proper = proper_find
     @stations = @proper.stations
   end
   
   def edit
-    @proper = Proper.find(params[:id])
+    @proper = proper_find
     @proper.stations.build
   end
 
   def update
-    @proper = Proper.find(params[:id])
+    @proper = proper_find
     if @proper.update(proper_params)
       redirect_to root_path
     else
